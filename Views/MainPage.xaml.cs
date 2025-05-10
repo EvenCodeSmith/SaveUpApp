@@ -8,7 +8,7 @@ namespace SaveUpApp.Views
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new SaveUpViewModel();
+            BindingContext = App.SharedViewModel;
         }
 
     }

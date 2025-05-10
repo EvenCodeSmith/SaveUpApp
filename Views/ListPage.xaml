@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaveUpApp.Views.ListPage"
+             Title="Saved Items">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" CornerRadius="12" Padding="10" Margin="0,5">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding Description}" FontAttributes="Bold" FontSize="16" />
+                            <Label Text="{Binding Amount, StringFormat='CHF {0:F2}'}" TextColor="Green" />
+                            <Label Text="{Binding SaveDate, StringFormat='Saved on {0:dd.MM.yyyy HH:mm}'}" FontSize="12" TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

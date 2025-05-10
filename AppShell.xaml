@@ -11,6 +11,13 @@
         <Tab Title="Übersicht" Icon="icon_home.png">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
+        <Tab Title="Erfassen" Icon="icon_add.png">
+            <ShellContent ContentTemplate="{DataTemplate views:AddItemPage}" />
+        </Tab>
+        <Tab Title="Liste" Icon="icon_list.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ListPage}" />
+        </Tab>
+        
 
     </TabBar>
 

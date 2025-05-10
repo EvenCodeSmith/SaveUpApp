@@ -28,21 +28,39 @@ public partial class SaveUpViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void AddItem()
+    private async void AddItem()
     {
+        if (string.IsNullOrWhiteSpace(NewDescription))
+        {
+            await Shell.Current.DisplayAlert("Invalid Input", "Description cannot be empty.", "OK");
+            return;
+        }
+
+
+        if (NewAmount <= 0)
+        {
+            await Shell.Current.DisplayAlert("Invalid Input", "Amount must be greater than 0.", "OK");
+            return;
+        }
+
         var item = new SaveItem
         {
             Description = NewDescription,
             Amount = NewAmount,
             SaveDate = DateTime.Now
         };
+
         Items.Add(item);
         CalculateTotal();
         Save();
 
+
         NewDescription = string.Empty;
         NewAmount = 0;
+
+        await Shell.Current.DisplayAlert("Saved", "Entry has been added.", "OK");
     }
+
 
     [RelayCommand]
     private void ClearAll()
