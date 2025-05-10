@@ -8,13 +8,13 @@
     Title="SaveUpApp">
 
     <TabBar>
-        <Tab Title="Übersicht" Icon="icon_home.png">
+        <Tab Title="Overview" Icon="icon_home.png">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
-        <Tab Title="Erfassen" Icon="icon_add.png">
+        <Tab Title="Add Savings" Icon="icon_add.png">
             <ShellContent ContentTemplate="{DataTemplate views:AddItemPage}" />
         </Tab>
-        <Tab Title="Liste" Icon="icon_list.png">
+        <Tab Title="List" Icon="icon_list.png">
             <ShellContent ContentTemplate="{DataTemplate views:ListPage}" />
         </Tab>
         

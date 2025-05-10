@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿// SaveUpViewModel.cs
+using System.Collections.ObjectModel;
 using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -11,9 +12,6 @@ public partial class SaveUpViewModel : ObservableObject
     private const string FileName = "saveitems.json";
 
     [ObservableProperty]
-    private ObservableCollection<SaveItem> items = new();
-
-    [ObservableProperty]
     private double totalAmount;
 
     [ObservableProperty]
@@ -21,6 +19,8 @@ public partial class SaveUpViewModel : ObservableObject
 
     [ObservableProperty]
     private double newAmount;
+
+    public ObservableCollection<SaveItemViewModel> Items { get; set; } = new();
 
     public SaveUpViewModel()
     {
@@ -36,31 +36,29 @@ public partial class SaveUpViewModel : ObservableObject
             return;
         }
 
-
         if (NewAmount <= 0)
         {
             await Shell.Current.DisplayAlert("Invalid Input", "Amount must be greater than 0.", "OK");
             return;
         }
 
-        var item = new SaveItem
+        var model = new SaveItem
         {
             Description = NewDescription,
             Amount = NewAmount,
             SaveDate = DateTime.Now
         };
 
-        Items.Add(item);
-        CalculateTotal();
-        Save();
-
+        Items.Add(new SaveItemViewModel(model, this));
 
         NewDescription = string.Empty;
         NewAmount = 0;
 
+        CalculateTotal();
+        Save();
+
         await Shell.Current.DisplayAlert("Saved", "Entry has been added.", "OK");
     }
-
 
     [RelayCommand]
     private void ClearAll()
@@ -70,15 +68,27 @@ public partial class SaveUpViewModel : ObservableObject
         Save();
     }
 
+    public void DeleteItem(SaveItem item)
+    {
+        var toRemove = Items.FirstOrDefault(i => i.Model == item);
+        if (toRemove != null)
+        {
+            Items.Remove(toRemove);
+            CalculateTotal();
+            Save();
+        }
+    }
+
     private void CalculateTotal()
     {
-        TotalAmount = Items.Sum(i => i.Amount);
+        TotalAmount = Items.Sum(i => i.Model.Amount);
     }
 
     private async void Save()
     {
         var path = Path.Combine(FileSystem.AppDataDirectory, FileName);
-        var json = JsonSerializer.Serialize(Items);
+        var models = Items.Select(i => i.Model).ToList();
+        var json = JsonSerializer.Serialize(models);
         await File.WriteAllTextAsync(path, json);
     }
 
@@ -88,10 +98,11 @@ public partial class SaveUpViewModel : ObservableObject
         if (File.Exists(path))
         {
             var json = await File.ReadAllTextAsync(path);
-            var loadedItems = JsonSerializer.Deserialize<ObservableCollection<SaveItem>>(json);
+            var loadedItems = JsonSerializer.Deserialize<List<SaveItem>>(json);
             if (loadedItems != null)
             {
-                Items = loadedItems;
+                Items = new ObservableCollection<SaveItemViewModel>(
+                    loadedItems.Select(model => new SaveItemViewModel(model, this)));
                 CalculateTotal();
             }
         }

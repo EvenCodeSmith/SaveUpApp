@@ -11,9 +11,7 @@
 
     <VerticalStackLayout Padding="20" Spacing="25">
 
-        <Label Text="Total Savings"
-               FontSize="Title"
-               HorizontalOptions="Center" />
+        <Label Text="Total Savings" Style="{StaticResource HeadlineLabel}" />
 
         <Label Text="{Binding TotalAmount, StringFormat='CHF {0:F2}'}"
                FontSize="48"
