@@ -4,7 +4,7 @@
              xmlns:resx="clr-namespace:SaveUpApp.Resources.Languages"
              xmlns:vm="clr-namespace:SaveUpApp.ViewModels"
              x:Class="SaveUpApp.Views.MainPage"
-             Title="Overview">
+             Title="{x:Static resx:Resources.TabOverview}">
 
     <!-- Set the ViewModel as BindingContext -->
     <ContentPage.BindingContext>
@@ -32,23 +32,6 @@
                 CornerRadius="12"
                 Padding="10"
                 FontSize="Medium" />
-
-        <!-- Language buttons -->
-        <Button Text="Deutsch"
-                Command="{Binding SwitchToGermanCommand}"
-                Clicked="OnGermanClicked"
-                BackgroundColor="LightGray"
-                TextColor="White"
-                CornerRadius="12"
-                Padding="10" />
-
-        <Button Text="English"
-                Command="{Binding SwitchToEnglishCommand}"
-                Clicked="OnEnglishClicked"
-                BackgroundColor="LightGray"
-                TextColor="White"
-                CornerRadius="12"
-                Padding="10" />
 
     </VerticalStackLayout>
 </ContentPage>

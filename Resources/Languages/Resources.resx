@@ -123,9 +123,6 @@
   <data name="ClearButton" xml:space="preserve">
     <value> Clear All</value>
   </data>
-  <data name="DeleteText" xml:space="preserve">
-    <value>Delete</value>
-  </data>
   <data name="DeleteTitle" xml:space="preserve">
     <value>Delete Entry</value>
   </data>
@@ -176,5 +173,14 @@
   </data>
   <data name="YesButton" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TabSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="LanguageLabel" xml:space="preserve">
+    <value>Language</value>
   </data>
 </root>

@@ -28,5 +28,11 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:ListPage}" />
         </Tab>
+        <Tab Title="{Binding TabSettings}">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xe8b8;" FontFamily="MaterialIcons" Size="24" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
+        </Tab>
     </TabBar>
 </Shell>

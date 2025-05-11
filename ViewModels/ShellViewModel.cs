@@ -16,6 +16,7 @@ public partial class ShellViewModel : ObservableObject
     [ObservableProperty] private string tabOverview = SaveUpApp.Resources.Languages.Resources.TabOverview;
     [ObservableProperty] private string tabAddSavings = SaveUpApp.Resources.Languages.Resources.TabAddSavings;
     [ObservableProperty] private string tabList = SaveUpApp.Resources.Languages.Resources.TabList;
+    [ObservableProperty] private string tabSettings = SaveUpApp.Resources.Languages.Resources.TabSettings;
 
     public void UpdateTexts()
     {

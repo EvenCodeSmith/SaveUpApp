@@ -29,6 +29,9 @@ public partial class SaveUpViewModel : ObservableObject
     [ObservableProperty]
     private string savedItemsText = SaveUpApp.Resources.Languages.Resources.SavedItems;
 
+    [ObservableProperty]
+    private string languageLabel = SaveUpApp.Resources.Languages.Resources.LanguageLabel;
+
 
 
 

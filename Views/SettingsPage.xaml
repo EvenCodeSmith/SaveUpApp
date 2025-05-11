@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:SaveUpApp.Resources.Languages"
+             xmlns:vm="clr-namespace:SaveUpApp.ViewModels"
+             x:Class="SaveUpApp.Views.SettingsPage"
+             Title="{x:Static resx:Resources.TabSettings}">
+
+    <ContentPage.BindingContext>
+        <vm:SaveUpViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="25">
+
+        <Label Text="{Binding LanguageLabel}" 
+               HorizontalOptions="Start"
+               Style="{StaticResource HeadlineLabel}" />
+
+        <Button Text="Deutsch"
+        Command="{Binding SwitchToGermanCommand}"
+        Clicked="OnGermanClicked"
+        BackgroundColor="LightGray"
+        TextColor="White"
+        CornerRadius="12"
+        Padding="10" />
+
+        <Button Text="English"
+        Command="{Binding SwitchToEnglishCommand}"
+        Clicked="OnEnglishClicked"
+        BackgroundColor="LightGray"
+        TextColor="White"
+        CornerRadius="12"
+        Padding="10" />
+
+        <Button Text="Don't click me!"
+        Clicked="OnCrashButtonClicked"
+        BackgroundColor="Red"
+        TextColor="White"
+        CornerRadius="12"
+        Padding="10" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -177,4 +177,10 @@
   <data name="DeleteText" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="TabSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="LanguageLabel" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
 </root>

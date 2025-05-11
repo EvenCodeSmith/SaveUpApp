@@ -160,6 +160,15 @@ namespace SaveUpApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Language ähnelt.
+        /// </summary>
+        internal static string LanguageLabel {
+            get {
+                return ResourceManager.GetString("LanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
         /// </summary>
         internal static string NoButton {
@@ -228,6 +237,15 @@ namespace SaveUpApp.Resources.Languages {
         internal static string TabOverview {
             get {
                 return ResourceManager.GetString("TabOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
+        /// </summary>
+        internal static string TabSettings {
+            get {
+                return ResourceManager.GetString("TabSettings", resourceCulture);
             }
         }
         
