@@ -4,22 +4,31 @@
              x:Class="SaveUpApp.Views.ListPage"
              Title="Saved Items">
 
+    <!-- Main layout for the page -->
     <VerticalStackLayout Padding="20" Spacing="10">
 
-        <CollectionView ItemsSource="{Binding Items}">
+        <!-- CollectionView shows list of saved items -->
+        <CollectionView x:Name="SavedItemsList"
+                        ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
+
+                    <!-- SwipeView allows swipe-to-delete on touch devices -->
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal">
+                                <!-- Swipe-to-delete button -->
                                 <SwipeItem Text="Delete"
                                            BackgroundColor="Red"
                                            Command="{Binding DeleteCommand}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
 
+                        <!-- Content of each item -->
                         <Frame BorderColor="LightGray" CornerRadius="12" Padding="10" Margin="0,5">
                             <Grid ColumnDefinitions="*,Auto">
+
+                                <!-- Text content -->
                                 <VerticalStackLayout Spacing="2">
                                     <Label Text="{Binding Description}" FontAttributes="Bold" FontSize="16" />
                                     <Label Text="{Binding Amount, StringFormat='CHF {0:F2}'}" TextColor="Green" />
@@ -27,18 +36,25 @@
                                            FontSize="12" TextColor="Gray" />
                                 </VerticalStackLayout>
 
-                                <!-- Optional: delete button visible for non-touch platforms -->
-                                <ImageButton Source="trashcan.png"
-                                             Command="{Binding DeleteCommand}"
-                                             BackgroundColor="Transparent"
-                                             HeightRequest="32"
-                                             WidthRequest="32"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="Center"
-                                             Grid.Column="1" />
+                                <!-- Always visible delete button (no image needed) -->
+                                <Button Text="🗑"
+                                        Command="{Binding DeleteCommand}"
+                                        BackgroundColor="Red"
+                                        TextColor="White"
+                                        FontSize="18"
+                                        Padding="0"
+                                        HeightRequest="32"
+                                        WidthRequest="32"
+                                        CornerRadius="8"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Center"
+                                        Grid.Column="1" />
+
                             </Grid>
                         </Frame>
+
                     </SwipeView>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
