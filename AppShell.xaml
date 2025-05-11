@@ -1,24 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="SaveUpApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:SaveUpApp.Views"
-    Shell.FlyoutBehavior="Disabled"
-    Title="SaveUpApp">
+    xmlns:viewmodels="clr-namespace:SaveUpApp.ViewModels">
+
+    <Shell.BindingContext>
+        <viewmodels:ShellViewModel />
+    </Shell.BindingContext>
 
     <TabBar>
-        <Tab Title="Overview" Icon="icon_home.png">
+        <Tab Icon="icon_home.png" Title="{Binding TabOverview}">
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
-        <Tab Title="Add Savings" Icon="icon_add.png">
+        <Tab Icon="icon_add.png" Title="{Binding TabAddSavings}">
             <ShellContent ContentTemplate="{DataTemplate views:AddItemPage}" />
         </Tab>
-        <Tab Title="List" Icon="icon_list.png">
+        <Tab Icon="icon_list.png" Title="{Binding TabList}">
             <ShellContent ContentTemplate="{DataTemplate views:ListPage}" />
         </Tab>
-        
-
     </TabBar>
-
 </Shell>

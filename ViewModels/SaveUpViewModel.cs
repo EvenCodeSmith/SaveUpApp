@@ -4,6 +4,7 @@ using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SaveUpApp.Model;
+using Resources = SaveUpApp.Resources.Languages.Resources;
 
 namespace SaveUpApp.ViewModels;
 
@@ -20,11 +21,22 @@ public partial class SaveUpViewModel : ObservableObject
     [ObservableProperty]
     private double newAmount;
 
+    [ObservableProperty]
+    private string clearButtonText = SaveUpApp.Resources.Languages.Resources.ClearButton;
+
+
+    [ObservableProperty]
+    private string savedItemsText = SaveUpApp.Resources.Languages.Resources.SavedItems;
+
+
+
+
     public ObservableCollection<SaveItemViewModel> Items { get; set; } = new();
 
     public SaveUpViewModel()
     {
         LoadData();
+        NewDescription = string.Empty;
     }
 
     [RelayCommand]
@@ -107,4 +119,35 @@ public partial class SaveUpViewModel : ObservableObject
             }
         }
     }
+
+
+    [RelayCommand]
+    private void SwitchToGerman()
+    {
+        App.ChangeLanguage("de");
+        (App.Current.MainPage as AppShell)?.UpdateShellTexts();
+        (App.Current.MainPage as AppShell)?.UpdateShellTabTitles();
+        UpdateTexts();
+    }
+
+    [RelayCommand]
+    private void SwitchToEnglish()
+    {
+        App.ChangeLanguage("en");
+        (App.Current.MainPage as AppShell)?.UpdateShellTexts();
+        (App.Current.MainPage as AppShell)?.UpdateShellTabTitles();
+        UpdateTexts();
+    }
+
+
+
+private void UpdateTexts()
+    {
+        ClearButtonText = SaveUpApp.Resources.Languages.Resources.ClearButton;
+        SavedItemsText = SaveUpApp.Resources.Languages.Resources.SavedItems;
+    }
+
 }
+
+
+

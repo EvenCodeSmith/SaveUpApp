@@ -1,31 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:SaveUpApp.Resources.Languages"
              xmlns:vm="clr-namespace:SaveUpApp.ViewModels"
              x:Class="SaveUpApp.Views.MainPage"
              Title="Overview">
 
+    <!-- Set the ViewModel as BindingContext -->
     <ContentPage.BindingContext>
         <vm:SaveUpViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="20" Spacing="25">
 
-        <Label Text="Total Savings" Style="{StaticResource HeadlineLabel}" />
+        <!-- Title bound to localized resource -->
+        <Label Text="{Binding SavedItemsText}" 
+               Style="{StaticResource HeadlineLabel}" />
 
+        <!-- Total saved amount -->
         <Label Text="{Binding TotalAmount, StringFormat='CHF {0:F2}'}"
                FontSize="48"
                FontAttributes="Bold"
                TextColor="Green"
                HorizontalOptions="Center" />
 
-        <Button Text="Clear All Entries"
+        <!-- Clear All button -->
+        <Button Text="{Binding ClearButtonText}"
                 Command="{Binding ClearAllCommand}"
                 BackgroundColor="Crimson"
                 TextColor="White"
                 CornerRadius="12"
                 Padding="10"
                 FontSize="Medium" />
+
+        <!-- Language buttons -->
+        <Button Text="Deutsch"
+                Command="{Binding SwitchToGermanCommand}"
+                BackgroundColor="LightGray"
+                TextColor="White"
+                CornerRadius="12"
+                Padding="10" />
+
+        <Button Text="English"
+                Command="{Binding SwitchToEnglishCommand}"
+                BackgroundColor="LightGray"
+                TextColor="White"
+                CornerRadius="12"
+                Padding="10" />
 
     </VerticalStackLayout>
 </ContentPage>

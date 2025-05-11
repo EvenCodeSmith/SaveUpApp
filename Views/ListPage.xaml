@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:SaveUpApp.Resources.Languages" 
              x:Class="SaveUpApp.Views.ListPage"
-             Title="Saved Items">
+             Title="{x:Static resx:Resources.SavedItems}">
+    <!-- Localized page title -->
 
-    <!-- Main layout for the page -->
+    <!-- Main layout container -->
     <VerticalStackLayout Padding="20" Spacing="10">
 
-        <!-- CollectionView shows list of saved items -->
-        <CollectionView x:Name="SavedItemsList"
-                        ItemsSource="{Binding Items}">
+        <!-- Displays all saved items from ViewModel -->
+        <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <!-- SwipeView allows swipe-to-delete on touch devices -->
+                    <!-- Allows swipe-to-delete (mobile devices) -->
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems Mode="Reveal">
-                                <!-- Swipe-to-delete button -->
-                                <SwipeItem Text="Delete"
-                                           BackgroundColor="Red"
-                                           Command="{Binding DeleteCommand}" />
+                                <!-- Localized swipe-delete button -->
+                                <SwipeItem 
+                                    Text="{x:Static resx:Resources.DeleteText}" 
+                                    BackgroundColor="Red"
+                                    Command="{Binding DeleteCommand}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
 
-                        <!-- Content of each item -->
+                        <!-- Visual layout for each item -->
                         <Frame BorderColor="LightGray" CornerRadius="12" Padding="10" Margin="0,5">
                             <Grid ColumnDefinitions="*,Auto">
 
-                                <!-- Text content -->
+                                <!-- Texts (bound from SaveItemViewModel) -->
                                 <VerticalStackLayout Spacing="2">
-                                    <Label Text="{Binding Description}" FontAttributes="Bold" FontSize="16" />
-                                    <Label Text="{Binding Amount, StringFormat='CHF {0:F2}'}" TextColor="Green" />
+                                    <Label Text="{Binding Description}" 
+                                           FontAttributes="Bold" 
+                                           FontSize="16" />
+
+                                    <Label Text="{Binding Amount, StringFormat='CHF {0:F2}'}" 
+                                           TextColor="Green" />
+
                                     <Label Text="{Binding SaveDate, StringFormat='Saved on {0:dd.MM.yyyy HH:mm}'}"
-                                           FontSize="12" TextColor="Gray" />
+                                           FontSize="12" 
+                                           TextColor="Gray" />
                                 </VerticalStackLayout>
 
-                                <!-- Always visible delete button (no image needed) -->
+                                <!-- Optional visible delete button (desktop) -->
                                 <Button Text="🗑"
                                         Command="{Binding DeleteCommand}"
                                         BackgroundColor="Red"
@@ -49,7 +57,6 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Center"
                                         Grid.Column="1" />
-
                             </Grid>
                         </Frame>
 
