@@ -22,9 +22,8 @@ namespace SaveUpApp.Resources.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -62,7 +61,7 @@ namespace SaveUpApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Amount ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saved Money ähnelt.
         /// </summary>
         internal static string Amount {
             get {
@@ -89,11 +88,92 @@ namespace SaveUpApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Delete Entry ähnelt.
+        /// </summary>
+        internal static string DeleteTitle {
+            get {
+                return ResourceManager.GetString("DeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Are you sure that you want to delete that entry ? ähnelt.
+        /// </summary>
+        internal static string DeletionText {
+            get {
+                return ResourceManager.GetString("DeletionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Description ähnelt.
         /// </summary>
         internal static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Description cannot be empty. ähnelt.
+        /// </summary>
+        internal static string EmptyDescription {
+            get {
+                return ResourceManager.GetString("EmptyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Entry has been added. ähnelt.
+        /// </summary>
+        internal static string EntrySavedMessage {
+            get {
+                return ResourceManager.GetString("EntrySavedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saved ähnelt.
+        /// </summary>
+        internal static string EntrySavedTitle {
+            get {
+                return ResourceManager.GetString("EntrySavedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Amount must be greater than 0. ähnelt.
+        /// </summary>
+        internal static string GreaterThanZero {
+            get {
+                return ResourceManager.GetString("GreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Invalid Input ähnelt.
+        /// </summary>
+        internal static string InvalidInputTitle {
+            get {
+                return ResourceManager.GetString("InvalidInputTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No ähnelt.
+        /// </summary>
+        internal static string NoButton {
+            get {
+                return ResourceManager.GetString("NoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die OK ähnelt.
+        /// </summary>
+        internal static string OkButton {
+            get {
+                return ResourceManager.GetString("OkButton", resourceCulture);
             }
         }
         
@@ -112,6 +192,15 @@ namespace SaveUpApp.Resources.Languages {
         internal static string SavedItems {
             get {
                 return ResourceManager.GetString("SavedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Saved on {0} ähnelt.
+        /// </summary>
+        internal static string SavedOnText {
+            get {
+                return ResourceManager.GetString("SavedOnText", resourceCulture);
             }
         }
         
@@ -139,6 +228,15 @@ namespace SaveUpApp.Resources.Languages {
         internal static string TabOverview {
             get {
                 return ResourceManager.GetString("TabOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Yes ähnelt.
+        /// </summary>
+        internal static string YesButton {
+            get {
+                return ResourceManager.GetString("YesButton", resourceCulture);
             }
         }
     }

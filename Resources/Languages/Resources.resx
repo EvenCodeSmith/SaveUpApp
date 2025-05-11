@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Amount" xml:space="preserve">
-    <value>Amount</value>
+    <value>Saved Money</value>
   </data>
   <data name="ClearButton" xml:space="preserve">
     <value> Clear All</value>
@@ -126,14 +126,44 @@
   <data name="DeleteText" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Delete Entry</value>
+  </data>
+  <data name="DeletionText" xml:space="preserve">
+    <value>Are you sure that you want to delete that entry ?</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Description cannot be empty.</value>
+  </data>
+  <data name="EntrySavedMessage" xml:space="preserve">
+    <value>Entry has been added.</value>
+  </data>
+  <data name="EntrySavedTitle" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="GreaterThanZero" xml:space="preserve">
+    <value>Amount must be greater than 0.</value>
+  </data>
+  <data name="InvalidInputTitle" xml:space="preserve">
+    <value>Invalid Input</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value> Save Entry</value>
   </data>
   <data name="SavedItems" xml:space="preserve">
     <value>Saved Items</value>
+  </data>
+  <data name="SavedOnText" xml:space="preserve">
+    <value>Saved on {0}</value>
   </data>
   <data name="TabAddSavings" xml:space="preserve">
     <value>Add Savings</value>
@@ -143,5 +173,8 @@
   </data>
   <data name="TabOverview" xml:space="preserve">
     <value> Overview</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

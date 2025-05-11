@@ -36,6 +36,7 @@
         <!-- Language buttons -->
         <Button Text="Deutsch"
                 Command="{Binding SwitchToGermanCommand}"
+                Clicked="OnGermanClicked"
                 BackgroundColor="LightGray"
                 TextColor="White"
                 CornerRadius="12"
@@ -43,6 +44,7 @@
 
         <Button Text="English"
                 Command="{Binding SwitchToEnglishCommand}"
+                Clicked="OnEnglishClicked"
                 BackgroundColor="LightGray"
                 TextColor="White"
                 CornerRadius="12"

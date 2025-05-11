@@ -1,6 +1,7 @@
 ﻿// SaveUpViewModel.cs
 using System.Collections.ObjectModel;
 using System.Text.Json;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SaveUpApp.Model;
@@ -44,13 +45,13 @@ public partial class SaveUpViewModel : ObservableObject
     {
         if (string.IsNullOrWhiteSpace(NewDescription))
         {
-            await Shell.Current.DisplayAlert("Invalid Input", "Description cannot be empty.", "OK");
+            await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.EmptyDescription, Resources.Languages.Resources.OkButton);
             return;
         }
 
         if (NewAmount <= 0)
         {
-            await Shell.Current.DisplayAlert("Invalid Input", "Amount must be greater than 0.", "OK");
+            await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.GreaterThanZero, Resources.Languages.Resources.OkButton);
             return;
         }
 
@@ -69,7 +70,10 @@ public partial class SaveUpViewModel : ObservableObject
         CalculateTotal();
         Save();
 
-        await Shell.Current.DisplayAlert("Saved", "Entry has been added.", "OK");
+        await Shell.Current.DisplayAlert(Resources.Languages.Resources.EntrySavedTitle,
+                                         Resources.Languages.Resources.EntrySavedMessage,
+                                         Resources.Languages.Resources.OkButton
+                                         );
     }
 
     [RelayCommand]
@@ -80,14 +84,20 @@ public partial class SaveUpViewModel : ObservableObject
         Save();
     }
 
-    public void DeleteItem(SaveItem item)
+    public async Task DeleteItem(SaveItem item)
     {
         var toRemove = Items.FirstOrDefault(i => i.Model == item);
-        if (toRemove != null)
+
+        bool confirm = await Shell.Current.DisplayAlert(Resources.Languages.Resources.DeleteTitle, Resources.Languages.Resources.DeletionText, Resources.Languages.Resources.YesButton, Resources.Languages.Resources.NoButton);
+
+        if (confirm)
         {
-            Items.Remove(toRemove);
-            CalculateTotal();
-            Save();
+            if (toRemove != null)
+            {
+                Items.Remove(toRemove);
+                CalculateTotal();
+                Save();
+            }
         }
     }
 

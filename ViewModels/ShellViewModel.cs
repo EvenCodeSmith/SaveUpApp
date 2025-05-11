@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SaveUpApp.Resources.Languages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SaveUpApp.Resources.Languages;
+using System.Globalization;
 
 namespace SaveUpApp.ViewModels;
 
@@ -22,4 +23,45 @@ public partial class ShellViewModel : ObservableObject
         TabAddSavings = SaveUpApp.Resources.Languages.Resources.TabAddSavings;
         TabList = SaveUpApp.Resources.Languages.Resources.TabList;
     }
+
+    public void SetLanguage(string cultureCode)
+    {
+        try
+        {
+            var culture = new CultureInfo(cultureCode);
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            // Apply to resx system
+            SaveUpApp.Resources.Languages.Resources.Culture = culture;
+
+            // Update all observable text bindings
+            UpdateTexts(); // for tab titles
+            Application.Current.MainPage = new AppShell();
+            App.ShellViewModel.NotifyAllItemsChanged(); // for item date labels
+            
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"[Localization] Failed to switch to {cultureCode}: {ex.Message}");
+        }
+    }
+    public void NotifyAllItemsChanged()
+    {
+        foreach (var item in App.SharedViewModel.Items)
+        {
+            item.NotifyDateChanged();
+        }
+    }
+
+    
+
+
+
+
 }

@@ -5,7 +5,8 @@ namespace SaveUpApp
 {
     public partial class App : Application
     {
-        public static SaveUpViewModel SharedViewModel { get; } = new SaveUpViewModel(); // Ich hatte Ghost Data ...
+        public static SaveUpViewModel SharedViewModel { get; } = new SaveUpViewModel();
+        public static ShellViewModel ShellViewModel { get; } = new();
 
         public App()
         {
@@ -17,8 +18,6 @@ namespace SaveUpApp
         {
             var culture = new CultureInfo(cultureCode);
             Thread.CurrentThread.CurrentUICulture = culture;
-
-            // ganz klar sagen, welche Resources gemeint sind
             SaveUpApp.Resources.Languages.Resources.Culture = culture;
         }
 

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SaveUpApp.Model;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace SaveUpApp.ViewModels
 {
-    public class SaveItemViewModel
+    public class SaveItemViewModel : ObservableObject
     {
         public SaveItem Model { get; }
         private SaveUpViewModel _parent;
@@ -19,6 +20,10 @@ namespace SaveUpApp.ViewModels
         public DateTime SaveDate => Model.SaveDate;
 
         public ICommand DeleteCommand { get; }
+
+        public string LocalizedSaveDate =>
+            string.Format(Resources.Languages.Resources.SavedOnText, Model.SaveDate.ToString("dd.MM.yyyy HH:mm"));
+
 
         public SaveItemViewModel(SaveItem model, SaveUpViewModel parent)
         {
@@ -30,6 +35,11 @@ namespace SaveUpApp.ViewModels
         private void OnDelete()
         {
             _parent.DeleteItem(Model);
+        }
+
+        public void NotifyDateChanged()
+        {
+            OnPropertyChanged(nameof(LocalizedSaveDate));
         }
     }
 

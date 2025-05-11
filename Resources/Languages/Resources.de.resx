@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Amount" xml:space="preserve">
-    <value>Eintrag speichern</value>
+    <value>Gespartes</value>
   </data>
   <data name="ClearButton" xml:space="preserve">
     <value>Alle löschen</value>
@@ -126,14 +126,44 @@
   <data name="DeleteText" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Eintrag löschen</value>
+  </data>
+  <data name="DeletionText" xml:space="preserve">
+    <value>Bist du sicher das du diesen Eintrag löschen möchtest ?</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Beschreibung</value>
   </data>
+  <data name="EmptyDescription" xml:space="preserve">
+    <value>Beschreibung darf nicht Leer sein.</value>
+  </data>
+  <data name="EntrySavedMessage" xml:space="preserve">
+    <value> Eintrag wurde gespeichert.</value>
+  </data>
+  <data name="EntrySavedTitle" xml:space="preserve">
+    <value>Gespeichert</value>
+  </data>
+  <data name="GreaterThanZero" xml:space="preserve">
+    <value>Eintrag muss grösser als 0 sein.</value>
+  </data>
+  <data name="InvalidInputTitle" xml:space="preserve">
+    <value>Ungültige Eingabe</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="SaveButton" xml:space="preserve">
-    <value>Betrag</value>
+    <value>Speichern</value>
   </data>
   <data name="SavedItems" xml:space="preserve">
     <value>Gespeicherte Einträge</value>
+  </data>
+  <data name="SavedOnText" xml:space="preserve">
+    <value> Gespeichert am {0}</value>
   </data>
   <data name="TabAddSavings" xml:space="preserve">
     <value> Sparen hinzufügen</value>
@@ -143,5 +173,8 @@
   </data>
   <data name="TabOverview" xml:space="preserve">
     <value>Übersicht</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>
