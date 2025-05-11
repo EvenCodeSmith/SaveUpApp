@@ -10,13 +10,22 @@
     </Shell.BindingContext>
 
     <TabBar>
-        <Tab Icon="icon_home.png" Title="{Binding TabOverview}">
+        <Tab Title="{Binding TabOverview}">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xe88a;" FontFamily="MaterialIcons" Size="24" />
+            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
         </Tab>
-        <Tab Icon="icon_add.png" Title="{Binding TabAddSavings}">
+        <Tab Title="{Binding TabAddSavings}">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xe147;" FontFamily="MaterialIcons" Size="24" />
+            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:AddItemPage}" />
         </Tab>
-        <Tab Icon="icon_list.png" Title="{Binding TabList}">
+        <Tab Title="{Binding TabList}">
+            <Tab.Icon>
+                <FontImageSource Glyph="&#xe0ee;" FontFamily="MaterialIcons" Size="24" />
+            </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate views:ListPage}" />
         </Tab>
     </TabBar>

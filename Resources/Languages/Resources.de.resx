@@ -123,9 +123,6 @@
   <data name="ClearButton" xml:space="preserve">
     <value>Alle löschen</value>
   </data>
-  <data name="DeleteText" xml:space="preserve">
-    <value>Löschen</value>
-  </data>
   <data name="DeleteTitle" xml:space="preserve">
     <value>Eintrag löschen</value>
   </data>
@@ -166,7 +163,7 @@
     <value> Gespeichert am {0}</value>
   </data>
   <data name="TabAddSavings" xml:space="preserve">
-    <value> Sparen hinzufügen</value>
+    <value>Gespartes hinzufügen</value>
   </data>
   <data name="TabList" xml:space="preserve">
     <value>Liste</value>
@@ -176,5 +173,8 @@
   </data>
   <data name="YesButton" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Löschen</value>
   </data>
 </root>
