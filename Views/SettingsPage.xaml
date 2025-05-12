@@ -32,14 +32,11 @@
         CornerRadius="12"
         Padding="10" />
 
-        <Button Text="Don't click me!"
-        Clicked="OnCrashButtonClicked"
-        BackgroundColor="Red"
-        TextColor="White"
-        CornerRadius="12"
-        Padding="10" />
-
-        <Picker Title="Currency" SelectedIndex="0" SelectedIndexChanged="OnCurrencyChanged" >
+        <Label Text="Currency" 
+       HorizontalOptions="Start"
+       Style="{StaticResource HeadlineLabel}" />
+        
+        <Picker SelectedIndex="0" SelectedIndexChanged="OnCurrencyChanged" >
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>CHF</x:String>

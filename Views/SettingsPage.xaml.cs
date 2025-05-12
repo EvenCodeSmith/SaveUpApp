@@ -21,12 +21,6 @@ public partial class SettingsPage : ContentPage
         App.ShellViewModel.SetLanguage("en");
     }
 
-    private void OnCrashButtonClicked(object sender, EventArgs e)
-    {
-        object o7 = null;
-        var explode = o7.ToString(); // BUMMM :)
-    }
-
     private void OnCurrencyChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;
