@@ -11,46 +11,55 @@ namespace SaveUpApp.ViewModels;
 
 public partial class SaveUpViewModel : ObservableObject
 {
+
+    // Filename for saving local data
     private const string FileName = "saveitems.json";
 
+    // Total amount of all saved entries
     [ObservableProperty]
     private double totalAmount;
 
+    // Description for a new entry
     [ObservableProperty]
     private string newDescription;
 
+    // Amount for a new entry
     [ObservableProperty]
     private double newAmount;
 
+    // Text for the clear button
     [ObservableProperty]
     private string clearButtonText = SaveUpApp.Resources.Languages.Resources.ClearButton;
 
-
+    // Text label for "Saved Items"
     [ObservableProperty]
     private string savedItemsText = SaveUpApp.Resources.Languages.Resources.SavedItems;
 
+    // Label for language selection
     [ObservableProperty]
     private string languageLabel = SaveUpApp.Resources.Languages.Resources.LanguageLabel;
 
+    // Total amount formatted with currency
     public string LocalizedTotalAmount =>
         $"{App.ShellViewModel.CurrencySymbol} {TotalAmount:F2}";
 
 
-
-
-
+    // Collection of all saved entries
     public ObservableCollection<SaveItemViewModel> Items { get; set; } = new();
 
+    // Constructor loads saved data and resets input
     public SaveUpViewModel()
     {
         LoadData();
         NewDescription = string.Empty;
     }
 
+
+    // Command: Add a new entry
     [RelayCommand]
     private async void AddItem()
     {
-        
+        // Input validation
         if (string.IsNullOrWhiteSpace(NewDescription))
         {
             await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.EmptyDescription, Resources.Languages.Resources.OkButton);
@@ -73,7 +82,7 @@ public partial class SaveUpViewModel : ObservableObject
             await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.AmountError, Resources.Languages.Resources.OkButton);
             return;
         }
-
+        // Create new entry
         var model = new SaveItem
         {
             Description = NewDescription,
@@ -81,8 +90,8 @@ public partial class SaveUpViewModel : ObservableObject
             SaveDate = DateTime.Now
         };
 
-        
 
+        // Add to list and reset input
         Items.Add(new SaveItemViewModel(model, this));
 
         NewDescription = string.Empty;
@@ -91,12 +100,14 @@ public partial class SaveUpViewModel : ObservableObject
         CalculateTotal();
         Save();
 
+        // Show confirmation message
         await Shell.Current.DisplayAlert(Resources.Languages.Resources.EntrySavedTitle,
                                          Resources.Languages.Resources.EntrySavedMessage,
                                          Resources.Languages.Resources.OkButton
                                          );
     }
 
+    // Command: Clear all entries
     [RelayCommand]
     private void ClearAll()
     {
@@ -105,6 +116,7 @@ public partial class SaveUpViewModel : ObservableObject
         Save();
     }
 
+    // Deletes an item after confirmation
     public async Task DeleteItem(SaveItem item)
     {
         var toRemove = Items.FirstOrDefault(i => i.Model == item);
@@ -121,7 +133,7 @@ public partial class SaveUpViewModel : ObservableObject
             }
         }
     }
-
+    // Calculates the total amount
     private void CalculateTotal()
     {
         TotalAmount = Items.Sum(i => i.Model.Amount);
@@ -136,6 +148,7 @@ public partial class SaveUpViewModel : ObservableObject
         await File.WriteAllTextAsync(path, json);
     }
 
+    // Saves all data to a local JSON file
     private async void LoadData()
     {
         var path = Path.Combine(FileSystem.AppDataDirectory, FileName);
@@ -152,7 +165,7 @@ public partial class SaveUpViewModel : ObservableObject
         }
     }
 
-
+    // Command: Switch language to German
     [RelayCommand]
     private void SwitchToGerman()
     {
@@ -162,6 +175,7 @@ public partial class SaveUpViewModel : ObservableObject
         UpdateTexts();
     }
 
+    // Command: Switch language to English
     [RelayCommand]
     private void SwitchToEnglish()
     {
@@ -171,8 +185,7 @@ public partial class SaveUpViewModel : ObservableObject
         UpdateTexts();
     }
 
-
-
+    // Updates localized texts after language switch
     private void UpdateTexts()
     {
         ClearButtonText = SaveUpApp.Resources.Languages.Resources.ClearButton;

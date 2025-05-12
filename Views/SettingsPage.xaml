@@ -10,12 +10,14 @@
         <vm:SaveUpViewModel />
     </ContentPage.BindingContext>
 
+    <!-- Layout container for all controls -->
     <VerticalStackLayout Padding="20" Spacing="25">
 
+        <!-- Label for the language section -->
         <Label Text="{Binding LanguageLabel}" 
                HorizontalOptions="Start"
                Style="{StaticResource HeadlineLabel}" />
-
+        <!-- Button to switch language to German -->
         <Button Text="Deutsch"
         Command="{Binding SwitchToGermanCommand}"
         Clicked="OnGermanClicked"
@@ -24,6 +26,7 @@
         CornerRadius="12"
         Padding="10" />
 
+        <!-- Button to switch language to English -->
         <Button Text="English"
         Command="{Binding SwitchToEnglishCommand}"
         Clicked="OnEnglishClicked"
@@ -32,10 +35,13 @@
         CornerRadius="12"
         Padding="10" />
 
+
+        <!-- Label for the currency selection -->
         <Label Text="Currency" 
        HorizontalOptions="Start"
        Style="{StaticResource HeadlineLabel}" />
-        
+
+        <!-- Picker to choose the currency symbol -->
         <Picker SelectedIndex="0" SelectedIndexChanged="OnCurrencyChanged" >
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
