@@ -17,6 +17,10 @@ namespace SaveUpApp.ViewModels
 
         public string Description => Model.Description;
         public double Amount => Model.Amount;
+
+        public string LocalizedAmount =>
+                        $"{App.ShellViewModel.CurrencySymbol} {Model.Amount:F2}";
+
         public DateTime SaveDate => Model.SaveDate;
 
         public ICommand DeleteCommand { get; }
@@ -41,6 +45,12 @@ namespace SaveUpApp.ViewModels
         {
             OnPropertyChanged(nameof(LocalizedSaveDate));
         }
+
+        public void NotifyCurrencyChanged()
+        {
+            OnPropertyChanged(nameof(App.SharedViewModel.LocalizedTotalAmount));
+        }
+
     }
 
 }

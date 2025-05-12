@@ -183,4 +183,10 @@
   <data name="LanguageLabel" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="DescriptionError" xml:space="preserve">
+    <value>Description can't be longer than 20 characters.</value>
+  </data>
+  <data name="AmountError" xml:space="preserve">
+    <value>Amount can't be bigger than 10'000.</value>
+  </data>
 </root>

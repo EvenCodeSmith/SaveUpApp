@@ -18,7 +18,7 @@
                Style="{StaticResource HeadlineLabel}" />
 
         <!-- Total saved amount -->
-        <Label Text="{Binding TotalAmount, StringFormat='CHF {0:F2}'}"
+        <Label Text="{Binding LocalizedTotalAmount}"
                FontSize="48"
                FontAttributes="Bold"
                TextColor="Green"

@@ -70,6 +70,15 @@ namespace SaveUpApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Amount can&apos;t be bigger than 10&apos;000. ähnelt.
+        /// </summary>
+        internal static string AmountError {
+            get {
+                return ResourceManager.GetString("AmountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die  Clear All ähnelt.
         /// </summary>
         internal static string ClearButton {
@@ -111,6 +120,15 @@ namespace SaveUpApp.Resources.Languages {
         internal static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Description can&apos;t be longer than 20 characters. ähnelt.
+        /// </summary>
+        internal static string DescriptionError {
+            get {
+                return ResourceManager.GetString("DescriptionError", resourceCulture);
             }
         }
         

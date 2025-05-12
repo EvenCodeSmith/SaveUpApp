@@ -38,5 +38,17 @@
         TextColor="White"
         CornerRadius="12"
         Padding="10" />
+
+        <Picker Title="Currency" SelectedIndex="0" SelectedIndexChanged="OnCurrencyChanged" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>CHF</x:String>
+                    <x:String>EUR</x:String>
+                    <x:String>USD</x:String>
+                    <x:String>¥</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
     </VerticalStackLayout>
 </ContentPage>

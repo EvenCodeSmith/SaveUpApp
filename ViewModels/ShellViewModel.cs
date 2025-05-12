@@ -17,6 +17,7 @@ public partial class ShellViewModel : ObservableObject
     [ObservableProperty] private string tabAddSavings = SaveUpApp.Resources.Languages.Resources.TabAddSavings;
     [ObservableProperty] private string tabList = SaveUpApp.Resources.Languages.Resources.TabList;
     [ObservableProperty] private string tabSettings = SaveUpApp.Resources.Languages.Resources.TabSettings;
+    [ObservableProperty] private string currencySymbol = "CHF";
 
     public void UpdateTexts()
     {

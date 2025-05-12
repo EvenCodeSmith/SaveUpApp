@@ -32,6 +32,10 @@ public partial class SaveUpViewModel : ObservableObject
     [ObservableProperty]
     private string languageLabel = SaveUpApp.Resources.Languages.Resources.LanguageLabel;
 
+    public string LocalizedTotalAmount =>
+        $"{App.ShellViewModel.CurrencySymbol} {TotalAmount:F2}";
+
+
 
 
 
@@ -46,6 +50,7 @@ public partial class SaveUpViewModel : ObservableObject
     [RelayCommand]
     private async void AddItem()
     {
+        
         if (string.IsNullOrWhiteSpace(NewDescription))
         {
             await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.EmptyDescription, Resources.Languages.Resources.OkButton);
@@ -58,12 +63,25 @@ public partial class SaveUpViewModel : ObservableObject
             return;
         }
 
+        if (NewDescription.Length > 20)
+        {
+            await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.DescriptionError, Resources.Languages.Resources.OkButton);
+            return;
+        }
+        if (NewAmount > 10000)
+        {
+            await Shell.Current.DisplayAlert(Resources.Languages.Resources.InvalidInputTitle, Resources.Languages.Resources.AmountError, Resources.Languages.Resources.OkButton);
+            return;
+        }
+
         var model = new SaveItem
         {
             Description = NewDescription,
             Amount = NewAmount,
             SaveDate = DateTime.Now
         };
+
+        
 
         Items.Add(new SaveItemViewModel(model, this));
 
@@ -107,6 +125,7 @@ public partial class SaveUpViewModel : ObservableObject
     private void CalculateTotal()
     {
         TotalAmount = Items.Sum(i => i.Model.Amount);
+        OnPropertyChanged(nameof(LocalizedTotalAmount));
     }
 
     private async void Save()
@@ -154,11 +173,13 @@ public partial class SaveUpViewModel : ObservableObject
 
 
 
-private void UpdateTexts()
+    private void UpdateTexts()
     {
         ClearButtonText = SaveUpApp.Resources.Languages.Resources.ClearButton;
         SavedItemsText = SaveUpApp.Resources.Languages.Resources.SavedItems;
     }
+
+   
 
 }
 
